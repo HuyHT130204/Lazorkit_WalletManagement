@@ -4,6 +4,7 @@ import { getTokenBySymbol } from '@/data/tokens'
 import ActionButton from '@/components/ActionButton'
 import TabBar from '@/components/TabBar'
 import BackButton from '@/components/BackButton'
+import Image from 'next/image'
 
 function Sparkline() {
 	const points = [2,4,3,6,8,7,9,12,10,13]
@@ -32,7 +33,7 @@ export default function TokenDetail() {
 				</header>
 
 				<section className="text-center space-y-1">
-					<img src={token.icon} className="w-14 h-14 mx-auto rounded-full" />
+					<Image src={token.icon} alt={token.symbol} width={56} height={56} className="w-14 h-14 mx-auto rounded-full" />
 					<div className="text-4xl font-bold">${fiat}</div>
 					<p className="text-gray-400 text-sm">{token.balance} {token.symbol} • ${token.priceUsd}/ {token.symbol}</p>
 				</section>

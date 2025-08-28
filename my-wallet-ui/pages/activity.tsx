@@ -5,7 +5,7 @@ type Tx = { id: string; type: 'receive' | 'send' | 'swap'; token: string; amount
 const txs: Tx[] = [
 	{ id: '1', type: 'receive', token: 'USDC', amount: '+$25.00', time: '2h ago' },
 	{ id: '2', type: 'send', token: 'SOL', amount: '-0.002 SOL', time: '1d ago' },
-	{ id: '3', type: 'swap', token: 'BTC', amount: '+$1.10', time: '3d ago' },
+	{ id: '3', type: 'swap', token: 'USDC', amount: '+$1.10', time: '3d ago' },
 ]
 
 export default function ActivityPage() {

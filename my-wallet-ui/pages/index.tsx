@@ -51,10 +51,10 @@ export default function Home() {
 				) : (
 					<div className="grid grid-cols-2 gap-3">
 						<CollectibleCard image="/icons/solana.svg" name="Solana OG" collection="Solana" />
-						<CollectibleCard image="/icons/eth.svg" name="Ether Rock" collection="Ethereum" />
+						<CollectibleCard image="/icons/usdc.svg" name="USDC Badge" collection="USD Coin" />
 					</div>
-				)}
-			</main>
+								)}
+				</main>
 			<TabBar />
 		</>
 	)

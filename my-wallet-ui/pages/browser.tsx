@@ -15,8 +15,7 @@ export default function BrowserPage() {
 				</div>
 				<div className="grid gap-3">
 					<DappCard title="Jupiter" desc="Best rates across Solana DEXes" icon="/icons/solana.svg" />
-					<DappCard title="Magic Eden" desc="Discover and trade NFTs" icon="/icons/eth.svg" />
-					<DappCard title="Uniswap" desc="Swap ERC20 tokens easily" icon="/icons/eth.svg" />
+					<DappCard title="USDC Portal" desc="Manage and bridge USD Coin" icon="/icons/usdc.svg" />
 				</div>
 			</main>
 			<TabBar />

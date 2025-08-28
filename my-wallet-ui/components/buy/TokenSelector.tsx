@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 type Token = {
 	name: string
 	symbol: string
@@ -7,7 +9,6 @@ type Token = {
 const popular: Token[] = [
 	{ name: 'Solana', symbol: 'SOL', icon: '/icons/solana.svg' },
 	{ name: 'USD Coin', symbol: 'USDC', icon: '/icons/usdc.svg' },
-	{ name: 'Ethereum', symbol: 'ETH', icon: '/icons/eth.svg' },
 ]
 
 export default function TokenSelector({ onSelect }: { onSelect: (t: Token) => void }) {
@@ -22,7 +23,7 @@ export default function TokenSelector({ onSelect }: { onSelect: (t: Token) => vo
 						onClick={() => onSelect(t)}
 					>
 						<div className="flex items-center gap-3">
-							<img src={t.icon} className="w-8 h-8 rounded-full" />
+							<Image src={t.icon} alt={t.symbol} width={32} height={32} className="rounded-full" />
 							<div>
 								<p className="font-medium">{t.name}</p>
 								<p className="text-xs text-gray-400">{t.symbol}</p>

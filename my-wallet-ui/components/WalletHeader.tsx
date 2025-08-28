@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { TOKENS } from '@/data/tokens'
 import { Icon } from './icons/Icon'
 import BackButton from './BackButton'
+import Image from 'next/image'
 
 export default function WalletHeader() {
 	const [searchOpen, setSearchOpen] = useState(false)
@@ -53,7 +54,7 @@ export default function WalletHeader() {
 									className="flex items-center gap-3 px-4 py-3 hover:bg-gray-800/40"
 									onClick={() => setSearchOpen(false)}
 								>
-									<img src={t.icon} className="w-7 h-7 rounded-full" />
+									<Image src={t.icon} alt={t.symbol} width={28} height={28} className="rounded-full" />
 									<div className="flex-1">
 										<p className="font-medium">{t.name}</p>
 										<p className="text-xs text-gray-400">{t.symbol}</p>
