@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+	color-scheme: dark;
+	--bg: #0a0f17; /* deep black-blue */
+	--bg-elev: #0f1722; /* elevated card */
+	--text: #e5e7eb; /* white-ish */
+	--muted: #9aa3b2;
+	--blue: #3b82f6; /* primary */
+	--blue-700: #2563eb;
+	--blue-500: #3b82f6;
+	--neon: #60a5fa; /* glow */
+}
+
+html.dark body {
+	background: var(--bg);
+	color: var(--text);
+}
+
+/* Neon radial gradient background container */
+.neon-bg {
+	background:
+		radial-gradient(1200px 600px at 50% -10%, rgba(59,130,246,0.15), transparent 60%),
+		radial-gradient(700px 400px at 30% 10%, rgba(96,165,250,0.12), transparent 60%),
+		radial-gradient(700px 400px at 70% 10%, rgba(37,99,235,0.12), transparent 60%),
+		var(--bg);
+}
+
+/* LazorKit-style helpers */
+.container-page {
+	@apply max-w-md mx-auto px-4;
+}
+.card-dark {
+	background: var(--bg-elev);
+	@apply border border-gray-800 rounded-2xl shadow-lg;
+}
+.action-btn {
+	@apply flex flex-col items-center justify-center gap-1 text-gray-300 hover:text-white transition-colors;
+}
+
+.btn-primary {
+	background: linear-gradient(90deg, var(--blue-700), var(--blue-500));
+	@apply text-white rounded-2xl font-medium;
+}
+.btn-outline {
+	@apply border border-gray-700 rounded-xl text-gray-300 hover:text-white;
+}

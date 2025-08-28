@@ -1,0 +1,71 @@
+import { useEffect, useState } from 'react'
+import TokenSelector from '@/components/buy/TokenSelector'
+import AmountInput from '@/components/buy/AmountInput'
+import PaymentMethod from '@/components/buy/PaymentMethod'
+import BuySummary from '@/components/buy/BuySummary'
+import CompletePaymentSheet from '@/components/CompletePaymentSheet'
+import BackButton from '@/components/BackButton'
+
+export default function BuyPage() {
+	const [step, setStep] = useState<'token' | 'amount' | 'method' | 'summary' | 'sheet'>('token')
+	const [token, setToken] = useState<{ name: string; symbol: string } | null>(null)
+	const [amount, setAmount] = useState<number>(0)
+	const [fiat, setFiat] = useState<'USD' | 'EUR' | 'VND'>('USD')
+	const [method, setMethod] = useState<{ id: string; label: string } | null>(null)
+
+	useEffect(() => {
+		const open = () => setStep('sheet')
+		window.addEventListener('open-payment-sheet', open as any)
+		return () => window.removeEventListener('open-payment-sheet', open as any)
+	}, [])
+
+	return (
+		<main className="container-page py-6 space-y-6">
+			<header className="flex items-center gap-3">
+				<BackButton onClick={() => history.back()} />
+				<h1 className="text-2xl font-semibold">Buy {token?.symbol ?? ''}</h1>
+			</header>
+
+			{step === 'token' && (
+				<TokenSelector
+					onSelect={(t) => {
+						setToken(t)
+						setStep('amount')
+					}}
+				/>
+			)}
+
+			{step === 'amount' && (
+				<AmountInput
+					onContinue={(amt, currency) => {
+						setAmount(amt)
+						setFiat(currency)
+						setStep('method')
+					}}
+				/>
+			)}
+
+			{step === 'method' && (
+				<PaymentMethod
+					onSelect={(m) => {
+						setMethod(m)
+						setStep('summary')
+					}}
+				/>
+			)}
+
+			{step === 'summary' && token && method && (
+				<BuySummary tokenSymbol={token.symbol} amountUsd={amount} methodLabel={`${method.label} • ${fiat}`} />
+			)}
+
+			{step === 'sheet' && (
+				<CompletePaymentSheet
+					amountUsd={amount}
+					currency={token?.symbol ?? 'USDC'}
+					onClose={() => setStep('summary')}
+					onPay={() => alert('Payment confirmed!')}
+				/>
+			)}
+		</main>
+	)
+} 
