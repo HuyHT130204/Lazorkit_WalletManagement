@@ -18,15 +18,22 @@ export default function AmountInput({ currency = 'USD', quotePerUnit = 0.0046, o
 		<div className="space-y-6">
 			<div className="flex items-center justify-between">
 				<h2 className="text-xl font-semibold">Buy SOL</h2>
-				<select
-					value={fiat}
-					onChange={(e) => setFiat(e.target.value as 'USD' | 'EUR' | 'VND')}
-					className="bg-transparent border border-gray-700 rounded-lg px-2 py-1 text-sm"
-				>
-					<option value="USD">USD</option>
-					<option value="EUR">EUR</option>
-					<option value="VND">VND</option>
-				</select>
+				<div className="relative">
+					<select
+						value={fiat}
+						onChange={(e) => setFiat(e.target.value as 'USD' | 'EUR' | 'VND')}
+						className="bg-gray-900/60 border border-gray-800 rounded-xl px-3 py-2 pr-8 text-sm text-white hover:bg-gray-800/80 transition-colors focus:outline-none focus:ring-2 focus:ring-violet-500/50 appearance-none"
+					>
+						<option value="USD" className="bg-gray-900 text-white">USD</option>
+						<option value="EUR" className="bg-gray-900 text-white">EUR</option>
+						<option value="VND" className="bg-gray-900 text-white">VND</option>
+					</select>
+					<div className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
+						<svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+						</svg>
+					</div>
+				</div>
 			</div>
 
 			<div className="text-center">
@@ -36,7 +43,13 @@ export default function AmountInput({ currency = 'USD', quotePerUnit = 0.0046, o
 
 			<div className="grid grid-cols-3 gap-3">
 				{[25, 50, 100].map((v) => (
-					<button key={v} className="rounded-2xl bg-gray-900/60 border border-gray-800 py-3" onClick={() => setAmount(v)}>{fiat === 'VND' ? v * FX.VND : v}{fiat === 'USD' ? '$' : ''}</button>
+					<button 
+						key={v} 
+						className="rounded-2xl bg-gray-900/60 border border-gray-800 py-3 hover:bg-gray-800/80 transition-colors text-white" 
+						onClick={() => setAmount(v)}
+					>
+						{fiat === 'VND' ? v * FX.VND : v}{fiat === 'USD' ? '$' : ''}
+					</button>
 				))}
 			</div>
 
@@ -44,7 +57,7 @@ export default function AmountInput({ currency = 'USD', quotePerUnit = 0.0046, o
 				{['1','2','3','4','5','6','7','8','9','.','0','⌫'].map((k) => (
 					<button
 						key={k}
-						className="rounded-2xl bg-gray-900/60 border border-gray-800 py-5 text-lg hover:bg-gray-800"
+						className="rounded-2xl bg-gray-900/60 border border-gray-800 py-5 text-lg hover:bg-gray-800/80 transition-colors text-white"
 						onClick={() => {
 							if (k === '⌫') {
 								setAmount((prev) => Math.floor(prev / 10))
@@ -59,7 +72,10 @@ export default function AmountInput({ currency = 'USD', quotePerUnit = 0.0046, o
 				))}
 			</div>
 
-			<button className="w-full btn-primary py-4" onClick={() => onContinue(amount, fiat)}>
+			<button 
+				className="w-full bg-violet-600 hover:bg-violet-700 text-white font-medium py-4 px-6 rounded-xl transition-colors" 
+				onClick={() => onContinue(amount, fiat)}
+			>
 				Continue
 			</button>
 		</div>

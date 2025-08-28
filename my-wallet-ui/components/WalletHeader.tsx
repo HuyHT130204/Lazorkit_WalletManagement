@@ -4,15 +4,20 @@ import { TOKENS } from '@/data/tokens'
 import { Icon } from './icons/Icon'
 import BackButton from './BackButton'
 import Image from 'next/image'
+import { useTokenContext } from '@/contexts/TokenContext'
 
 export default function WalletHeader() {
 	const [searchOpen, setSearchOpen] = useState(false)
 	const [q, setQ] = useState('')
+	const { isAllowedToken } = useTokenContext()
+	
 	const results = useMemo(() => {
 		const s = q.trim().toLowerCase()
-		if (!s) return TOKENS
-		return TOKENS.filter((t) => t.name.toLowerCase().includes(s) || t.symbol.toLowerCase().includes(s))
-	}, [q])
+		if (!s) return TOKENS.filter(isAllowedToken)
+		return TOKENS.filter((t) => 
+			isAllowedToken(t) && (t.name.toLowerCase().includes(s) || t.symbol.toLowerCase().includes(s))
+		)
+	}, [q, isAllowedToken])
 
 	return (
 		<div className="flex items-center justify-between">

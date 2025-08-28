@@ -10,13 +10,22 @@ import SegmentedTabs from '@/components/SegmentedTabs'
 import PerpsCard from '@/components/PerpsCard'
 import CollectibleCard from '@/components/CollectibleCard'
 import { TOKENS } from '@/data/tokens'
+import { useTokenContext } from '@/contexts/TokenContext'
 
 export default function Home() {
 	const [tab, setTab] = useState(0)
+	const { validateTokenBeforeAction, showReceiveWarning } = useTokenContext()
 	return (
 		<>
 			<main className="container-page py-6 space-y-6 pb-24">
 				<WalletHeader />
+
+				{/* Token Restriction Banner */}
+				<div className="bg-blue-900/20 border border-blue-800 rounded-lg p-3 mb-4">
+					<p className="text-blue-300 text-sm">
+						<strong>Note:</strong> This wallet only displays and allows operations with <em>USDC</em> and <em>SOL</em>.
+					</p>
+				</div>
 
 				<section className="text-center space-y-1">
 					<div className="text-5xl font-bold">$1.96</div>
@@ -27,9 +36,31 @@ export default function Home() {
 				</section>
 
 				<section className="grid grid-cols-4 gap-3">
-					<ActionButton iconName="qr" label="Receive" />
-					<ActionButton iconName="send" label="Send" />
-					<ActionButton iconName="swap" label="Swap" />
+					<ActionButton 
+						iconName="qr" 
+						label="Receive" 
+						onClick={showReceiveWarning}
+					/>
+					<ActionButton 
+						iconName="send" 
+						label="Send" 
+						onClick={() => {
+							// This would be replaced with actual send logic
+							const token = TOKENS[0]; // Example token
+							if (!validateTokenBeforeAction(token)) return;
+							// Proceed with send
+						}}
+					/>
+					<ActionButton 
+						iconName="swap" 
+						label="Swap" 
+						onClick={() => {
+							// This would be replaced with actual swap logic
+							const token = TOKENS[0]; // Example token
+							if (!validateTokenBeforeAction(token)) return;
+							// Proceed with swap
+						}}
+					/>
 					<Link href="/buy">
 						<ActionButton iconName="buy" label="Buy" />
 					</Link>

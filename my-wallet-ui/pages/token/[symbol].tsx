@@ -5,6 +5,9 @@ import ActionButton from '@/components/ActionButton'
 import TabBar from '@/components/TabBar'
 import BackButton from '@/components/BackButton'
 import Image from 'next/image'
+import { useTokenContext } from '@/contexts/TokenContext'
+import { useToast } from '@/components/Toast'
+import { useEffect } from 'react'
 
 function Sparkline() {
 	const points = [2,4,3,6,8,7,9,12,10,13]
@@ -19,9 +22,20 @@ function Sparkline() {
 export default function TokenDetail() {
 	const router = useRouter()
 	const { symbol } = router.query
+	const { isAllowedToken, validateTokenBeforeAction, showReceiveWarning } = useTokenContext()
+	const { showToast, ToastContainer } = useToast()
 	const token = typeof symbol === 'string' ? getTokenBySymbol(symbol) : undefined
 
+	// Redirect if token is not allowed
+	useEffect(() => {
+		if (token && !isAllowedToken(token)) {
+			showToast('This token is not supported in this wallet.', 'error');
+			router.push('/');
+		}
+	}, [token, isAllowedToken, router, showToast]);
+
 	if (!token) return null
+	if (!isAllowedToken(token)) return null
 	const fiat = (token.balance * token.priceUsd).toFixed(2)
 
 	return (
@@ -41,9 +55,27 @@ export default function TokenDetail() {
 				<div className="card-dark p-3"><Sparkline /></div>
 
 				<section className="grid grid-cols-4 gap-3">
-					<ActionButton iconName="qr" label="Receive" />
-					<ActionButton iconName="send" label="Send" />
-					<ActionButton iconName="swap" label="Swap" />
+					<ActionButton 
+						iconName="qr" 
+						label="Receive" 
+						onClick={showReceiveWarning}
+					/>
+					<ActionButton 
+						iconName="send" 
+						label="Send" 
+						onClick={() => {
+							if (!validateTokenBeforeAction(token)) return;
+							// Proceed with send operation
+						}}
+					/>
+					<ActionButton 
+						iconName="swap" 
+						label="Swap" 
+						onClick={() => {
+							if (!validateTokenBeforeAction(token)) return;
+							// Proceed with swap operation
+						}}
+					/>
 					<Link href="/buy"><ActionButton iconName="buy" label="Buy" /></Link>
 				</section>
 
@@ -52,6 +84,7 @@ export default function TokenDetail() {
 				</section>
 			</main>
 			<TabBar />
+			<ToastContainer />
 		</>
 	)
 } 

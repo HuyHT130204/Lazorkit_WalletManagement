@@ -1,6 +1,7 @@
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import '@/styles/globals.css'
+import { TokenProvider } from '@/contexts/TokenContext'
 
 export default function App({ Component, pageProps }: AppProps) {
 	return (
@@ -11,7 +12,9 @@ export default function App({ Component, pageProps }: AppProps) {
 			</Head>
 			<div className="dark">
 				<div className="neon-bg min-h-screen">
-					<Component {...pageProps} />
+					<TokenProvider>
+						<Component {...pageProps} />
+					</TokenProvider>
 				</div>
 			</div>
 		</>
