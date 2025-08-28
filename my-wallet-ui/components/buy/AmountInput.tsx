@@ -20,7 +20,7 @@ export default function AmountInput({ currency = 'USD', quotePerUnit = 0.0046, o
 				<h2 className="text-xl font-semibold">Buy SOL</h2>
 				<select
 					value={fiat}
-					onChange={(e) => setFiat(e.target.value as any)}
+					onChange={(e) => setFiat(e.target.value as 'USD' | 'EUR' | 'VND')}
 					className="bg-transparent border border-gray-700 rounded-lg px-2 py-1 text-sm"
 				>
 					<option value="USD">USD</option>

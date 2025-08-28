@@ -14,9 +14,9 @@ export default function BuyPage() {
 	const [method, setMethod] = useState<{ id: string; label: string } | null>(null)
 
 	useEffect(() => {
-		const open = () => setStep('sheet')
-		window.addEventListener('open-payment-sheet', open as any)
-		return () => window.removeEventListener('open-payment-sheet', open as any)
+		const handler = () => setStep('sheet')
+		window.addEventListener('open-payment-sheet', handler as EventListener)
+		return () => window.removeEventListener('open-payment-sheet', handler as EventListener)
 	}, [])
 
 	return (

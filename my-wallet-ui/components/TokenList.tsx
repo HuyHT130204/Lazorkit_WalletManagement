@@ -9,7 +9,7 @@ export default function TokenList({ tokens, title = 'Tokens' }: { tokens: Token[
 			<div>
 				{tokens.map((t) => (
 					<Link key={t.symbol} href={`/token/${t.symbol.toLowerCase()}`} className="block hover:bg-gray-800/40">
-						<TokenRow token={t as any} />
+						<TokenRow token={t} />
 					</Link>
 				))}
 			</div>
