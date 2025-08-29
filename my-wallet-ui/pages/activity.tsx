@@ -51,10 +51,11 @@ export default function ActivityPage() {
 	)
 }
 
+import nextI18NextConfig from '../next-i18next.config.js'
 export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
 	return {
 		props: {
-			...(await serverSideTranslations(locale ?? 'en', ['common'])),
+			...(await serverSideTranslations(locale ?? 'en', ['common'], nextI18NextConfig)),
 		},
 	}
 } 
