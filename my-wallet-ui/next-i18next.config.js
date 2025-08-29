@@ -10,7 +10,8 @@ module.exports = {
   defaultNS: 'common',
   ns: ['common'],
   fallbackLng: 'en',
-  localePath: path.resolve('./public/locales'),
+  // Use absolute path based on this config file's directory to avoid resolution issues on Vercel
+  localePath: path.resolve(__dirname, './public/locales'),
   reloadOnPrerender: process.env.NODE_ENV === 'development',
   react: { useSuspense: false },
 } 
