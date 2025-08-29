@@ -1,5 +1,3 @@
-const path = require('path')
-
 /** @type {import('next-i18next').UserConfig} */
 module.exports = {
   i18n: {
@@ -10,8 +8,8 @@ module.exports = {
   defaultNS: 'common',
   ns: ['common'],
   fallbackLng: 'en',
-  // Use absolute path based on this config file's directory to avoid resolution issues on Vercel
-  localePath: path.resolve(__dirname, './public/locales'),
+  // Use relative path instead of absolute path to avoid issues on Vercel
+  localePath: './public/locales',
   reloadOnPrerender: process.env.NODE_ENV === 'development',
   react: { useSuspense: false },
-} 
+}
