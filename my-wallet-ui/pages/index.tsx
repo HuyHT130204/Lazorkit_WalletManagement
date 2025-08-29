@@ -1,5 +1,8 @@
 import Link from 'next/link'
 import { useState } from 'react'
+import { GetServerSideProps } from 'next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useTranslation } from 'next-i18next'
 import ActionButton from '@/components/ActionButton'
 import TokenList from '@/components/TokenList'
 import WalletHeader from '@/components/WalletHeader'
@@ -9,21 +12,26 @@ import TabBar from '@/components/TabBar'
 import SegmentedTabs from '@/components/SegmentedTabs'
 import PerpsCard from '@/components/PerpsCard'
 import CollectibleCard from '@/components/CollectibleCard'
+import LanguageSwitcher from '@/components/LanguageSwitcher'
 import { TOKENS } from '@/data/tokens'
 import { useTokenContext } from '@/contexts/TokenContext'
 
 export default function Home() {
 	const [tab, setTab] = useState(0)
 	const { validateTokenBeforeAction, showReceiveWarning } = useTokenContext()
+	const { t } = useTranslation('common')
+	
 	return (
 		<>
 			<main className="container-page py-6 space-y-6 pb-24">
 				<WalletHeader />
+				
+				{/* Language Switcher moved into header actions; removing duplicate here */}
 
 				{/* Token Restriction Banner */}
 				<div className="bg-blue-900/20 border border-blue-800 rounded-lg p-3 mb-4">
 					<p className="text-blue-300 text-sm">
-						<strong>Note:</strong> This wallet only displays and allows operations with <em>USDC</em> and <em>SOL</em>.
+						{t('tokenRestriction.banner')}
 					</p>
 				</div>
 
@@ -38,12 +46,12 @@ export default function Home() {
 				<section className="grid grid-cols-4 gap-3">
 					<ActionButton 
 						iconName="qr" 
-						label="Receive" 
+						label={t('wallet.receive')} 
 						onClick={showReceiveWarning}
 					/>
 					<ActionButton 
 						iconName="send" 
-						label="Send" 
+						label={t('wallet.send')} 
 						onClick={() => {
 							// This would be replaced with actual send logic
 							const token = TOKENS[0]; // Example token
@@ -51,18 +59,11 @@ export default function Home() {
 							// Proceed with send
 						}}
 					/>
-					<ActionButton 
-						iconName="swap" 
-						label="Swap" 
-						onClick={() => {
-							// This would be replaced with actual swap logic
-							const token = TOKENS[0]; // Example token
-							if (!validateTokenBeforeAction(token)) return;
-							// Proceed with swap
-						}}
-					/>
+					<Link href="/swap">
+						<ActionButton iconName="swap" label={t('wallet.swap')} />
+					</Link>
 					<Link href="/buy">
-						<ActionButton iconName="buy" label="Buy" />
+						<ActionButton iconName="buy" label={t('wallet.buy')} />
 					</Link>
 				</section>
 
@@ -70,8 +71,8 @@ export default function Home() {
 				<PerpsCard />
 
 				<div className="flex items-center justify-between">
-					<h2 className="text-xl font-semibold">{tab === 0 ? 'Tokens' : 'Collectibles'}</h2>
-					<SegmentedTabs tabs={["Tokens", "Collectibles"]} onChange={setTab} />
+					<h2 className="text-xl font-semibold">{tab === 0 ? t('wallet.tokens') : t('wallet.collectibles')}</h2>
+					<SegmentedTabs tabs={[t('wallet.tokens'), t('wallet.collectibles')]} onChange={setTab} />
 				</div>
 
 				{tab === 0 ? (
@@ -89,4 +90,12 @@ export default function Home() {
 			<TabBar />
 		</>
 	)
+}
+
+export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
+	return {
+		props: {
+			...(await serverSideTranslations(locale ?? 'en', ['common'])),
+		},
+	}
 }

@@ -5,12 +5,15 @@ import { Icon } from './icons/Icon'
 import BackButton from './BackButton'
 import Image from 'next/image'
 import { useTokenContext } from '@/contexts/TokenContext'
+import LanguageSwitcher from '@/components/LanguageSwitcher'
+import { useTranslation } from 'next-i18next'
 
 export default function WalletHeader() {
 	const [searchOpen, setSearchOpen] = useState(false)
 	const [q, setQ] = useState('')
 	const { isAllowedToken } = useTokenContext()
-	
+	const { t } = useTranslation('common')
+	 
 	const results = useMemo(() => {
 		const s = q.trim().toLowerCase()
 		if (!s) return TOKENS.filter(isAllowedToken)
@@ -25,10 +28,10 @@ export default function WalletHeader() {
 				<div className="w-9 h-9 rounded-full bg-gray-800" />
 				<div>
 					<p className="text-sm text-gray-400">@kayx86</p>
-					<h1 className="text-2xl font-semibold">Main Account</h1>
+					<h1 className="text-2xl font-semibold">{t('wallet.mainAccount')}</h1>
 				</div>
 			</div>
-			<div className="flex items-center gap-3">
+			<div className="flex items-center gap-2">
 				<button className="w-9 h-9 grid place-items-center rounded-xl bg-gray-900/60 border border-gray-800">
 					<Icon name="qr" className="w-5 h-5" />
 				</button>
@@ -38,6 +41,7 @@ export default function WalletHeader() {
 				>
 					<Icon name="search" className="w-5 h-5" />
 				</button>
+				<LanguageSwitcher />
 			</div>
 			{searchOpen && (
 				<div className="fixed inset-0 z-20 p-4 backdrop-blur bg-black/60">
@@ -45,7 +49,7 @@ export default function WalletHeader() {
 						<div className="flex items-center gap-2">
 							<BackButton onClick={() => setSearchOpen(false)} />
 							<input
-								placeholder="Search tokens, NFTs..."
+								placeholder={t('common.search') + ' tokens, NFTs...'}
 								value={q}
 								onChange={(e) => setQ(e.target.value)}
 								className="w-full px-4 py-3 rounded-2xl bg-gray-900 border border-gray-800 outline-none"

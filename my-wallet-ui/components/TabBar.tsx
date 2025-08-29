@@ -1,16 +1,19 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { useTranslation } from 'next-i18next'
 import { Icon } from './icons/Icon'
-
-const tabs = [
-	{ href: '/', label: 'Wallet', icon: 'home' as const },
-	{ href: '/activity', label: 'Activity', icon: 'activity' as const },
-	{ href: '/browser', label: 'Browser', icon: 'browser' as const },
-	{ href: '/settings', label: 'Settings', icon: 'settings' as const },
-]
 
 export default function TabBar() {
 	const { pathname } = useRouter()
+	const { t } = useTranslation('common')
+	
+	const tabs = [
+		{ href: '/', label: t('navigation.wallet'), icon: 'home' as const },
+		{ href: '/activity', label: t('navigation.activity'), icon: 'activity' as const },
+		{ href: '/swap', label: t('navigation.swap'), icon: 'swap' as const },
+		{ href: '/settings', label: t('navigation.settings'), icon: 'settings' as const },
+	]
+
 	return (
 		<nav className="fixed bottom-0 inset-x-0 z-10 border-t border-gray-800 bg-black/70 backdrop-blur">
 			<div className="container-page">

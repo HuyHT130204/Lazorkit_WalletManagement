@@ -1,0 +1,139 @@
+{
+  "navigation": {
+    "wallet": "Ví",
+    "activity": "Hoạt động",
+    "swap": "Đổi",
+    "settings": "Cài đặt",
+    "browser": "Trình duyệt"
+  },
+  "common": {
+    "loading": "Đang tải...",
+    "error": "Lỗi",
+    "success": "Thành công",
+    "cancel": "Hủy",
+    "confirm": "Xác nhận",
+    "back": "Quay lại",
+    "next": "Tiếp theo",
+    "save": "Lưu",
+    "delete": "Xóa",
+    "edit": "Sửa",
+    "close": "Đóng",
+    "select": "Chọn",
+    "search": "Tìm kiếm",
+    "filter": "Lọc",
+    "all": "Tất cả",
+    "none": "Không có",
+    "max": "Tối đa",
+    "min": "Tối thiểu"
+  },
+  "wallet": {
+    "mainAccount": "Tài khoản chính",
+    "totalBalance": "Tổng số dư",
+    "receive": "Nhận",
+    "send": "Gửi",
+    "swap": "Đổi",
+    "buy": "Mua",
+    "tokens": "Token",
+    "popularTokens": "Token phổ biến",
+    "getRealTimeUpdates": "Nhận cập nhật thời gian thực về crypto, NFT và nhiều hơn nữa"
+  },
+  "perps": {
+    "description": "Dùng perps để giao dịch theo giá tương lai của tài sản với đòn bẩy",
+    "manage": "Quản lý"
+  },
+  "swap": {
+    "title": "Đổi token",
+    "from": "Từ",
+    "to": "Đến",
+    "selectToken": "Chọn token",
+    "balance": "Số dư",
+    "rate": "Tỷ giá",
+    "priceImpact": "Tác động giá",
+    "networkFee": "Phí mạng",
+    "minimumReceived": "Tối thiểu nhận được",
+    "swap": "Đổi",
+    "selectTokensToSwap": "Chọn token để đổi",
+    "insufficientBalance": "Số dư không đủ",
+    "quickActions": "Thao tác nhanh",
+    "useAllBalance": "Dùng toàn bộ số dư",
+    "halfBalance": "Một nửa số dư",
+    "swapTransactionSubmitted": "Giao dịch đổi đã được gửi!",
+    "pleaseSelectBothTokens": "Vui lòng chọn cả hai token"
+  },
+  "tokens": {
+    "solana": "Solana",
+    "usdCoin": "USD Coin",
+    "bitcoin": "Bitcoin",
+    "ethereum": "Ethereum"
+  },
+  "activity": {
+    "title": "Hoạt động",
+    "all": "Tất cả",
+    "send": "Gửi",
+    "receive": "Nhận",
+    "swap": "Đổi",
+    "noRecentTransactions": "Không có giao dịch gần đây",
+    "transactionHistory": "Lịch sử giao dịch",
+    "last7Days": "7 ngày qua"
+  },
+  "buy": {
+    "title": "Mua",
+    "selectToken": "Chọn token",
+    "enterAmount": "Nhập số lượng",
+    "selectPaymentMethod": "Chọn phương thức thanh toán",
+    "paymentConfirmed": "Thanh toán đã xác nhận!",
+    "summary": "Tóm tắt",
+    "completePayment": "Hoàn tất thanh toán",
+    "securePaymentProcessing": "Xử lý thanh toán an toàn cho",
+    "payNow": "Thanh toán ngay",
+    "securePayment": "Thanh toán an toàn",
+    "paymentProcessedSecurely": "Thanh toán của bạn được xử lý an toàn thông qua đối tác thanh toán đáng tin cậy",
+    "applePayViaUnlimit": "Apple Pay qua Unlimit",
+    "cardMasked": "Thẻ •••• {{last4}}"
+  },
+  "settings": {
+    "title": "Cài đặt",
+    "language": "Ngôn ngữ",
+    "currency": "Tiền tệ",
+    "notifications": "Thông báo",
+    "security": "Bảo mật",
+    "about": "Giới thiệu",
+    "version": "Phiên bản",
+    "english": "Tiếng Anh",
+    "vietnamese": "Tiếng Việt",
+    "profile": "Hồ sơ",
+    "faceIdBiometrics": "Face ID / Vân tay",
+    "developerMode": "Chế độ nhà phát triển",
+    "preferences": "Tùy chọn",
+    "network": "Mạng",
+    "priceAlerts": "Cảnh báo giá"
+  },
+  "tokenRestriction": {
+    "banner": "Lưu ý: Ví này chỉ hiển thị và cho phép thao tác với USDC và SOL.",
+    "onlyUsdcSolSupported": "Chỉ hỗ trợ USDC và SOL trong ví này.",
+    "tokenNotSupported": "Token này không được hỗ trợ trong ví.",
+    "onlyUsdcSolCanBeAdded": "Chỉ có thể thêm USDC và SOL.",
+    "otherTokensNotDisplayed": "Lưu ý: Các token khác sẽ không được hiển thị trong ví này."
+  },
+  "migration": {
+    "title": "Cập nhật quản lý token",
+    "description": "Chúng tôi đã cập nhật hệ thống để chỉ hiển thị và hỗ trợ USDC và SOL.",
+    "removedTokens": "Đã xóa {{count}} token không được hỗ trợ khỏi bộ nhớ cache.",
+    "gotIt": "Đã hiểu"
+  },
+  "validation": {
+    "invalidAmount": "Số lượng không hợp lệ",
+    "invalidAddress": "Địa chỉ không hợp lệ",
+    "insufficientFunds": "Số dư không đủ",
+    "networkError": "Lỗi mạng",
+    "transactionFailed": "Giao dịch thất bại"
+  },
+  "onramp": {
+    "title": "Mua token",
+    "faceIdLogin": "Đăng nhập Face ID",
+    "scanAndPay": "Quét và thanh toán",
+    "under30Seconds": "Dưới 30 giây",
+    "instantlySecure": "Nhanh chóng & An toàn",
+    "noPasswordsInstantSetup": "Không cần mật khẩu • Thiết lập tức thì"
+  }
+} 

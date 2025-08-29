@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useTranslation } from 'next-i18next'
 
 type Props = {
 	currency?: 'USD' | 'EUR' | 'VND'
@@ -13,11 +14,12 @@ export default function AmountInput({ currency = 'USD', quotePerUnit = 0.0046, o
 	const [fiat, setFiat] = useState<'USD' | 'EUR' | 'VND'>(currency)
 	const usdAmount = fiat === 'USD' ? amount : fiat === 'EUR' ? amount / FX.EUR : amount / FX.VND
 	const tokenAmount = usdAmount * quotePerUnit
+	const { t } = useTranslation('common')
 
 	return (
 		<div className="space-y-6">
 			<div className="flex items-center justify-between">
-				<h2 className="text-xl font-semibold">Buy SOL</h2>
+				<h2 className="text-xl font-semibold">{t('buy.title')} SOL</h2>
 				<div className="relative">
 					<select
 						value={fiat}
@@ -76,7 +78,7 @@ export default function AmountInput({ currency = 'USD', quotePerUnit = 0.0046, o
 				className="w-full bg-violet-600 hover:bg-violet-700 text-white font-medium py-4 px-6 rounded-xl transition-colors" 
 				onClick={() => onContinue(amount, fiat)}
 			>
-				Continue
+				{t('common.next')}
 			</button>
 		</div>
 	)

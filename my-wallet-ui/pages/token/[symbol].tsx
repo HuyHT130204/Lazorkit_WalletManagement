@@ -1,4 +1,7 @@
 import { useRouter } from 'next/router'
+import { GetServerSideProps } from 'next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useTranslation } from 'next-i18next'
 import Link from 'next/link'
 import { getTokenBySymbol } from '@/data/tokens'
 import ActionButton from '@/components/ActionButton'
@@ -24,15 +27,16 @@ export default function TokenDetail() {
 	const { symbol } = router.query
 	const { isAllowedToken, validateTokenBeforeAction, showReceiveWarning } = useTokenContext()
 	const { showToast, ToastContainer } = useToast()
+	const { t } = useTranslation('common')
 	const token = typeof symbol === 'string' ? getTokenBySymbol(symbol) : undefined
 
 	// Redirect if token is not allowed
 	useEffect(() => {
 		if (token && !isAllowedToken(token)) {
-			showToast('This token is not supported in this wallet.', 'error');
+			showToast(t('tokenRestriction.tokenNotSupported'), 'error');
 			router.push('/');
 		}
-	}, [token, isAllowedToken, router, showToast]);
+	}, [token, isAllowedToken, router, showToast, t]);
 
 	if (!token) return null
 	if (!isAllowedToken(token)) return null
@@ -57,34 +61,37 @@ export default function TokenDetail() {
 				<section className="grid grid-cols-4 gap-3">
 					<ActionButton 
 						iconName="qr" 
-						label="Receive" 
+						label={t('wallet.receive')} 
 						onClick={showReceiveWarning}
 					/>
 					<ActionButton 
 						iconName="send" 
-						label="Send" 
+						label={t('wallet.send')} 
 						onClick={() => {
 							if (!validateTokenBeforeAction(token)) return;
 							// Proceed with send operation
 						}}
 					/>
-					<ActionButton 
-						iconName="swap" 
-						label="Swap" 
-						onClick={() => {
-							if (!validateTokenBeforeAction(token)) return;
-							// Proceed with swap operation
-						}}
-					/>
-					<Link href="/buy"><ActionButton iconName="buy" label="Buy" /></Link>
+					<Link href="/swap">
+						<ActionButton iconName="swap" label={t('wallet.swap')} />
+					</Link>
+					<Link href="/buy"><ActionButton iconName="buy" label={t('wallet.buy')} /></Link>
 				</section>
 
 				<section className="card-dark p-4 text-sm text-gray-400">
-					No recent transactions.
+					{t('activity.noRecentTransactions')}
 				</section>
 			</main>
 			<TabBar />
 			<ToastContainer />
 		</>
 	)
+}
+
+export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
+	return {
+		props: {
+			...(await serverSideTranslations(locale ?? 'en', ['common'])),
+		},
+	}
 } 

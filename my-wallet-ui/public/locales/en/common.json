@@ -1,0 +1,142 @@
+{
+  "navigation": {
+    "wallet": "Wallet",
+    "activity": "Activity",
+    "swap": "Swap",
+    "settings": "Settings",
+    "browser": "Browser"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "back": "Back",
+    "next": "Next",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "close": "Close",
+    "select": "Select",
+    "search": "Search",
+    "filter": "Filter",
+    "all": "All",
+    "none": "None",
+    "max": "Max",
+    "min": "Min"
+  },
+  "wallet": {
+    "mainAccount": "Main Account",
+    "totalBalance": "Total Balance",
+    "receive": "Receive",
+    "send": "Send",
+    "swap": "Swap",
+    "buy": "Buy",
+    "tokens": "Tokens",
+    "collectibles": "Collectibles",
+    "getStarted": "Get Started",
+    "perps": "Perps",
+    "popularTokens": "Popular Tokens",
+    "getRealTimeUpdates": "Get real-time updates on your crypto, NFTs, and more"
+  },
+  "perps": {
+    "description": "Use perps to trade on an asset's future price with leverage",
+    "manage": "Manage"
+  },
+  "swap": {
+    "title": "Swap",
+    "from": "From",
+    "to": "To",
+    "selectToken": "Select Token",
+    "balance": "Balance",
+    "rate": "Rate",
+    "priceImpact": "Price Impact",
+    "networkFee": "Network Fee",
+    "minimumReceived": "Minimum Received",
+    "swap": "Swap",
+    "selectTokensToSwap": "Select tokens to swap",
+    "insufficientBalance": "Insufficient balance",
+    "quickActions": "Quick Actions",
+    "useAllBalance": "Use all balance",
+    "halfBalance": "Half balance",
+    "swapTransactionSubmitted": "Swap transaction submitted!",
+    "pleaseSelectBothTokens": "Please select both tokens"
+  },
+  "tokens": {
+    "solana": "Solana",
+    "usdCoin": "USD Coin",
+    "bitcoin": "Bitcoin",
+    "ethereum": "Ethereum"
+  },
+  "activity": {
+    "title": "Activity",
+    "all": "All",
+    "send": "Send",
+    "receive": "Receive",
+    "swap": "Swap",
+    "noRecentTransactions": "No recent transactions",
+    "transactionHistory": "Transaction History",
+    "last7Days": "Last 7 days"
+  },
+  "buy": {
+    "title": "Buy",
+    "selectToken": "Select Token",
+    "enterAmount": "Enter Amount",
+    "selectPaymentMethod": "Select Payment Method",
+    "paymentConfirmed": "Payment confirmed!",
+    "summary": "Summary",
+    "completePayment": "Complete Payment",
+    "securePaymentProcessing": "Secure payment processing for",
+    "payNow": "Pay Now",
+    "securePayment": "Secure Payment",
+    "paymentProcessedSecurely": "Your payment is processed securely through our trusted payment partner",
+    "applePayViaUnlimit": "Apple Pay via Unlimit",
+    "cardMasked": "Card •••• {{last4}}"
+  },
+  "settings": {
+    "title": "Settings",
+    "language": "Language",
+    "currency": "Currency",
+    "notifications": "Notifications",
+    "security": "Security",
+    "about": "About",
+    "version": "Version",
+    "english": "English",
+    "vietnamese": "Vietnamese",
+    "profile": "Profile",
+    "faceIdBiometrics": "Face ID / Biometrics",
+    "developerMode": "Developer Mode",
+    "preferences": "Preferences",
+    "network": "Network",
+    "priceAlerts": "Price alerts"
+  },
+  "tokenRestriction": {
+    "banner": "Note: This wallet only displays and allows operations with USDC and SOL.",
+    "onlyUsdcSolSupported": "Only USDC and SOL are supported in this wallet.",
+    "tokenNotSupported": "This token is not supported in this wallet.",
+    "onlyUsdcSolCanBeAdded": "Only USDC and SOL can be added.",
+    "otherTokensNotDisplayed": "Note: Other tokens will not be displayed in this wallet."
+  },
+  "migration": {
+    "title": "Token Management Update",
+    "description": "We have updated the system to only display and support USDC and SOL.",
+    "removedTokens": "Removed {{count}} unsupported tokens from cache.",
+    "gotIt": "Got it"
+  },
+  "validation": {
+    "invalidAmount": "Invalid amount",
+    "invalidAddress": "Invalid address",
+    "insufficientFunds": "Insufficient funds",
+    "networkError": "Network error",
+    "transactionFailed": "Transaction failed"
+  },
+  "onramp": {
+    "title": "Onramp",
+    "faceIdLogin": "Face ID Login",
+    "scanAndPay": "Scan & Pay",
+    "under30Seconds": "Under 30 Seconds",
+    "instantlySecure": "Instantly & Secure",
+    "noPasswordsInstantSetup": "No Passwords • Instant Setup"
+  }
+} 

@@ -1,3 +1,6 @@
+import { GetServerSideProps } from 'next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useTranslation } from 'next-i18next'
 import Badge from '@/components/atoms/Badge'
 import TabBar from '@/components/TabBar'
 
@@ -9,19 +12,21 @@ const txs: Tx[] = [
 ]
 
 export default function ActivityPage() {
+	const { t } = useTranslation('common')
+	
 	return (
 		<>
 			<main className="container-page py-6 pb-24 space-y-4">
 				<div>
-					<h1 className="text-2xl font-semibold">Activity</h1>
-					<p className="text-sm text-gray-400">Last 7 days: <span className="text-emerald-400">+$26.10</span></p>
+					<h1 className="text-2xl font-semibold">{t('activity.title')}</h1>
+					<p className="text-sm text-gray-400">{t('activity.last7Days')}: <span className="text-emerald-400">+$26.10</span></p>
 				</div>
 
 				<div className="flex gap-2">
-					<Badge variant="solid">All</Badge>
-					<Badge>Send</Badge>
-					<Badge>Receive</Badge>
-					<Badge>Swap</Badge>
+					<Badge variant="solid">{t('activity.all')}</Badge>
+					<Badge>{t('activity.send')}</Badge>
+					<Badge>{t('activity.receive')}</Badge>
+					<Badge>{t('activity.swap')}</Badge>
 				</div>
 
 				<div className="card-dark divide-y divide-gray-800">
@@ -44,4 +49,12 @@ export default function ActivityPage() {
 			<TabBar />
 		</>
 	)
+}
+
+export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
+	return {
+		props: {
+			...(await serverSideTranslations(locale ?? 'en', ['common'])),
+		},
+	}
 } 
