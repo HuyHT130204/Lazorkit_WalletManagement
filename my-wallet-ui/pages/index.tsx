@@ -12,7 +12,6 @@ import TabBar from '@/components/TabBar'
 import SegmentedTabs from '@/components/SegmentedTabs'
 import PerpsCard from '@/components/PerpsCard'
 import CollectibleCard from '@/components/CollectibleCard'
-import LanguageSwitcher from '@/components/LanguageSwitcher'
 import { TOKENS } from '@/data/tokens'
 import { useTokenContext } from '@/contexts/TokenContext'
 
