@@ -105,6 +105,8 @@
     "english": "English",
     "vietnamese": "Vietnamese",
     "profile": "Profile",
+    "wallet": "Wallet",
+    "connectWallet": "Connect Wallet",
     "faceIdBiometrics": "Face ID / Biometrics",
     "developerMode": "Developer Mode",
     "preferences": "Preferences",

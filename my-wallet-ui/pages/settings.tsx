@@ -5,6 +5,7 @@ import Toggle from '@/components/atoms/Toggle'
 import { useState } from 'react'
 import TabBar from '@/components/TabBar'
 import LanguageSwitcher from '@/components/LanguageSwitcher'
+import W3MButton from '@/components/W3MButton'
 
 export default function SettingsPage() {
 	const [faceId, setFaceId] = useState(true)
@@ -28,6 +29,13 @@ export default function SettingsPage() {
 							<p className="font-medium">@kayx86</p>
 							<p className="text-xs text-gray-400">{t('wallet.mainAccount')}</p>
 						</div>
+					</div>
+				</section>
+
+				<section className="card-dark">
+					<div className="px-4 py-3 border-b border-gray-800"><p className="text-sm text-gray-300">{t('settings.wallet')}</p></div>
+					<div className="px-4 py-4">
+						<W3MButton size="md" label={t('settings.connectWallet')} />
 					</div>
 				</section>
 

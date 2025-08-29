@@ -7,6 +7,7 @@ import Image from 'next/image'
 import { useTokenContext } from '@/contexts/TokenContext'
 import LanguageSwitcher from '@/components/LanguageSwitcher'
 import { useTranslation } from 'next-i18next'
+import W3MButton from '@/components/W3MButton'
 
 export default function WalletHeader() {
 	const [searchOpen, setSearchOpen] = useState(false)
@@ -23,26 +24,33 @@ export default function WalletHeader() {
 	}, [q, isAllowedToken])
 
 	return (
-		<div className="flex items-center justify-between">
-			<div className="flex items-center gap-3">
-				<div className="w-9 h-9 rounded-full bg-gray-800" />
-				<div>
+		<div className="space-y-2">
+			{/* Row 1: handle + small icons */}
+			<div className="flex items-center justify-between">
+				<div className="flex items-center gap-3">
+					<div className="w-9 h-9 rounded-full bg-gray-800" />
 					<p className="text-sm text-gray-400">@kayx86</p>
-					<h1 className="text-2xl font-semibold">{t('wallet.mainAccount')}</h1>
+				</div>
+				<div className="flex items-center gap-1.5">
+					<button className="w-8 h-8 grid place-items-center rounded-lg bg-gray-900/60 border border-gray-800">
+						<Icon name="qr" className="w-4 h-4" />
+					</button>
+					<button
+						className="w-8 h-8 grid place-items-center rounded-lg bg-gray-900/60 border border-gray-800"
+						onClick={() => setSearchOpen((v) => !v)}
+					>
+						<Icon name="search" className="w-4 h-4" />
+					</button>
+					<LanguageSwitcher />
 				</div>
 			</div>
-			<div className="flex items-center gap-2">
-				<button className="w-9 h-9 grid place-items-center rounded-xl bg-gray-900/60 border border-gray-800">
-					<Icon name="qr" className="w-5 h-5" />
-				</button>
-				<button
-					className="w-9 h-9 grid place-items-center rounded-xl bg-gray-900/60 border border-gray-800"
-					onClick={() => setSearchOpen((v) => !v)}
-				>
-					<Icon name="search" className="w-5 h-5" />
-				</button>
-				<LanguageSwitcher />
+
+			{/* Row 2: title + connect modal trigger */}
+			<div className="flex items-center justify-between">
+				<h1 className="text-2xl font-semibold">{t('wallet.mainAccount')}</h1>
+				<W3MButton balance="hide" size="sm" label="Connect Wallet" />
 			</div>
+
 			{searchOpen && (
 				<div className="fixed inset-0 z-20 p-4 backdrop-blur bg-black/60">
 					<div className="container-page space-y-3">
