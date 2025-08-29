@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { useState } from 'react'
-import { GetServerSideProps } from 'next'
+import { GetStaticProps } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useTranslation } from 'next-i18next'
 import ActionButton from '@/components/ActionButton'
@@ -14,6 +14,7 @@ import PerpsCard from '@/components/PerpsCard'
 import CollectibleCard from '@/components/CollectibleCard'
 import { TOKENS } from '@/data/tokens'
 import { useTokenContext } from '@/contexts/TokenContext'
+import nextI18NextConfig from '../next-i18next.config.js'
 
 export default function Home() {
 	const [tab, setTab] = useState(0)
@@ -24,8 +25,6 @@ export default function Home() {
 		<>
 			<main className="container-page py-6 space-y-6 pb-24">
 				<WalletHeader />
-				
-				{/* Language Switcher moved into header actions; removing duplicate here */}
 
 				{/* Token Restriction Banner */}
 				<div className="bg-blue-900/20 border border-blue-800 rounded-lg p-3 mb-4">
@@ -84,15 +83,14 @@ export default function Home() {
 						<CollectibleCard image="/icons/solana.svg" name="Solana OG" collection="Solana" />
 						<CollectibleCard image="/icons/usdc.svg" name="USDC Badge" collection="USD Coin" />
 					</div>
-								)}
-				</main>
+				)}
+			</main>
 			<TabBar />
 		</>
 	)
 }
 
-import nextI18NextConfig from '../next-i18next.config.js'
-export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
 	return {
 		props: {
 			...(await serverSideTranslations(locale ?? 'en', ['common'], nextI18NextConfig)),
