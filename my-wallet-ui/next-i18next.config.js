@@ -9,6 +9,8 @@ module.exports = {
   },
   defaultNS: 'common',
   ns: ['common'],
+  fallbackLng: 'en',
   localePath: path.resolve('./public/locales'),
   reloadOnPrerender: process.env.NODE_ENV === 'development',
+  react: { useSuspense: false },
 } 
