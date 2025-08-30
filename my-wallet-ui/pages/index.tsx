@@ -14,11 +14,13 @@ import PerpsCard from '@/components/PerpsCard'
 import CollectibleCard from '@/components/CollectibleCard'
 import { TOKENS } from '@/data/tokens'
 import { useTokenContext } from '@/contexts/TokenContext'
+import { useWalletContext } from '@/contexts/WalletContext'
 import nextI18NextConfig from '../next-i18next.config.js'
 
 export default function Home() {
 	const [tab, setTab] = useState(0)
 	const { validateTokenBeforeAction, showReceiveWarning } = useTokenContext()
+	const { wallet } = useWalletContext()
 	const { t } = useTranslation('common')
 	
 	return (
@@ -34,10 +36,10 @@ export default function Home() {
 				</div>
 
 				<section className="text-center space-y-1">
-					<div className="text-5xl font-bold">$1.96</div>
+					<div className="text-5xl font-bold">{wallet ? `${wallet.balance.toFixed(4)} SOL` : '0 SOL'}</div>
 					<div className="flex items-center justify-center gap-2 text-emerald-400 text-sm">
-						<span>+ $0.12</span>
-						<span className="bg-emerald-950/60 text-emerald-300 px-2 py-0.5 rounded-md">+6.43%</span>
+						<span>Devnet Balance</span>
+						<span className="bg-emerald-950/60 text-emerald-300 px-2 py-0.5 rounded-md">Connected</span>
 					</div>
 				</section>
 

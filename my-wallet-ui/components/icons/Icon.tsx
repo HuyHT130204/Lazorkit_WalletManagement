@@ -4,6 +4,7 @@ type IconName =
 	| 'swap'
 	| 'buy'
 	| 'search'
+	| 'scan'
 	| 'chevron-left'
 	| 'home'
 	| 'activity'
@@ -42,6 +43,13 @@ export function Icon({ name, className = 'w-6 h-6' }: { name: IconName; classNam
 			return (
 				<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className}>
 					<circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4" strokeLinecap="round"/>
+				</svg>
+			)
+		case 'scan':
+			return (
+				<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className}>
+					<path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2"/>
+					<path d="M7 12h10M12 7v10"/>
 				</svg>
 			)
 		case 'chevron-left':
