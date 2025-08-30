@@ -62,7 +62,12 @@ export default function BuyPage() {
 			)}
 
 			{step === 'summary' && token && method && (
-				<BuySummary tokenSymbol={token.symbol} amountUsd={amount} methodLabel={`${method.label} • ${fiat}`} />
+				<BuySummary 
+					tokenSymbol={token.symbol} 
+					amountUsd={amount} 
+					methodLabel={`${method.label} • ${fiat}`}
+					onContinue={() => setStep('sheet')}
+				/>
 			)}
 
 			{step === 'sheet' && (

@@ -31,7 +31,7 @@ export default function SettingsPage() {
 		{
 			id: 'solana',
 			name: 'Solana',
-			address: wallet?.address || 'Not connected',
+			address: wallet?.address || t('settings.notConnected'),
 			icon: '🔵',
 			network: 'Devnet',
 			isActive: true
@@ -39,7 +39,7 @@ export default function SettingsPage() {
 		{
 			id: 'usdc',
 			name: 'USDC',
-			address: wallet?.address || 'Not connected',
+			address: wallet?.address || t('settings.notConnected'),
 			icon: '💚',
 			network: 'Devnet',
 			isActive: false
@@ -57,7 +57,7 @@ export default function SettingsPage() {
 				{/* Wallet Profile Section */}
 				<section className="card-dark">
 					<div className="px-4 py-3 border-b border-gray-800">
-						<p className="text-sm text-gray-300">Wallet Profile</p>
+						<p className="text-sm text-gray-300">{t('settings.walletProfile')}</p>
 					</div>
 					<div className="px-4 py-4 flex items-center gap-3">
 						<div className="w-10 h-10 rounded-full bg-[#9945FF] flex items-center justify-center">
@@ -65,11 +65,11 @@ export default function SettingsPage() {
 						</div>
 						<div className="flex-1">
 							<p className="font-medium">{walletName}</p>
-							<p className="text-xs text-gray-400">{wallet ? formatAddress(wallet.address) : 'Not connected'}</p>
+							<p className="text-xs text-gray-400">{wallet ? formatAddress(wallet.address) : t('settings.notConnected')}</p>
 						</div>
 						<div className="text-right">
 							<p className="font-bold text-lg">{wallet ? `${wallet.balance.toFixed(4)} SOL` : '0 SOL'}</p>
-							<p className="text-xs text-gray-400">Balance</p>
+							<p className="text-xs text-gray-400">{t('settings.balance')}</p>
 						</div>
 					</div>
 				</section>
@@ -77,17 +77,17 @@ export default function SettingsPage() {
 				{/* Wallet Management Section */}
 				<section className="card-dark divide-y divide-gray-800">
 					<div className="px-4 py-3">
-						<p className="text-sm text-gray-300">Wallet Management</p>
+						<p className="text-sm text-gray-300">{t('settings.walletManagement')}</p>
 					</div>
 					<div className="px-4 py-3 flex items-center justify-between">
-						<span>Wallet Name</span>
+						<span>{t('settings.walletName')}</span>
 						{isEditingName ? (
 							<div className="flex gap-2 items-center">
 								<input
 									value={newWalletName}
 									onChange={(e) => setNewWalletName(e.target.value)}
 									className="px-2 py-1 bg-gray-800 border border-gray-700 rounded text-sm"
-									placeholder="Enter wallet name"
+									placeholder={t('settings.enterWalletName')}
 								/>
 								<button
 									onClick={() => {
@@ -123,13 +123,13 @@ export default function SettingsPage() {
 						)}
 					</div>
 					<div className="px-4 py-3 flex items-center justify-between">
-						<span>Network</span>
+						<span>{t('settings.network')}</span>
 						<span className="text-sm text-emerald-400">Devnet</span>
 					</div>
 					<div className="px-4 py-3 flex items-center justify-between cursor-pointer hover:bg-gray-800/40" onClick={() => setWalletListOpen(!walletListOpen)}>
-						<span>Wallet Accounts</span>
+						<span>{t('settings.walletAccounts')}</span>
 						<div className="flex items-center gap-2">
-							<span className="text-sm text-gray-400">2 accounts</span>
+							<span className="text-sm text-gray-400">2 {t('settings.accounts')}</span>
 							<ChevronDown className={`w-4 h-4 text-gray-400 transition-transform duration-200 ${walletListOpen ? 'rotate-180' : ''}`} />
 						</div>
 					</div>
@@ -194,11 +194,11 @@ export default function SettingsPage() {
 
 				{/* Danger Zone */}
 				<section className="card-dark divide-y divide-gray-800">
-					<div className="px-4 py-3"><p className="text-sm text-gray-300">Danger Zone</p></div>
+					<div className="px-4 py-3"><p className="text-sm text-gray-300">{t('settings.dangerZone')}</p></div>
 					<div className="px-4 py-3 flex items-center justify-between cursor-pointer hover:bg-gray-800/40" onClick={logout}>
 						<div className="flex items-center gap-2">
 							<LogOut className="w-4 h-4 text-red-400" />
-							<span className="text-red-400">Sign Out</span>
+							<span className="text-red-400">{t('settings.signOut')}</span>
 						</div>
 						<ChevronRight className="w-4 h-4 text-gray-400" />
 					</div>

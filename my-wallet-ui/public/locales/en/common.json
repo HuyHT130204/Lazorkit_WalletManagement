@@ -65,9 +65,7 @@
   },
   "tokens": {
     "solana": "Solana",
-    "usdCoin": "USD Coin",
-    "bitcoin": "Bitcoin",
-    "ethereum": "Ethereum"
+    "usdCoin": "USD Coin"
   },
   "activity": {
     "title": "Activity",
@@ -111,7 +109,17 @@
     "developerMode": "Developer Mode",
     "preferences": "Preferences",
     "network": "Network",
-    "priceAlerts": "Price alerts"
+    "priceAlerts": "Price alerts",
+    "walletProfile": "Wallet Profile",
+    "walletManagement": "Wallet Management",
+    "walletName": "Wallet Name",
+    "enterWalletName": "Enter wallet name",
+    "walletAccounts": "Wallet Accounts",
+    "accounts": "accounts",
+    "balance": "Balance",
+    "notConnected": "Not connected",
+    "dangerZone": "Danger Zone",
+    "signOut": "Sign Out"
   },
   "tokenRestriction": {
     "banner": "Note: This wallet only displays and allows operations with USDC and SOL.",

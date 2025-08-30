@@ -62,9 +62,7 @@
   },
   "tokens": {
     "solana": "Solana",
-    "usdCoin": "USD Coin",
-    "bitcoin": "Bitcoin",
-    "ethereum": "Ethereum"
+    "usdCoin": "USD Coin"
   },
   "activity": {
     "title": "Hoạt động",
@@ -108,7 +106,17 @@
     "developerMode": "Chế độ nhà phát triển",
     "preferences": "Tùy chọn",
     "network": "Mạng",
-    "priceAlerts": "Cảnh báo giá"
+    "priceAlerts": "Cảnh báo giá",
+    "walletProfile": "Hồ sơ ví",
+    "walletManagement": "Quản lý ví",
+    "walletName": "Tên ví",
+    "enterWalletName": "Nhập tên ví",
+    "walletAccounts": "Tài khoản ví",
+    "accounts": "tài khoản",
+    "balance": "Số dư",
+    "notConnected": "Chưa kết nối",
+    "dangerZone": "Khu vực nguy hiểm",
+    "signOut": "Đăng xuất"
   },
   "tokenRestriction": {
     "banner": "Lưu ý: Ví này chỉ hiển thị và cho phép thao tác với USDC và SOL.",
